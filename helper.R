@@ -2,6 +2,21 @@
 tournament <- read.csv("data/tournaments.csv")
 tournament <- tournament[!grepl("FIFA Women's World Cup", tournament$tournament_name), ]
 
+matches <- read.csv("data/matches.csv")
+matches <- matches[!grepl("FIFA Women's World Cup", matches$tournament_name), ]
+
+goals <- read.csv("data/goals.csv")
+goals <- goals[!grepl("FIFA Women's World Cup", goals$tournament_name), ]
+
+matches <- matches %>%
+  mutate(
+    winner = case_when(
+      result == "home team win" ~ home_team_name,
+      result == "away team win" ~ away_team_name,
+      TRUE ~ "draw"
+    )
+  )
+
 # Theme for dashboard
 customTheme <- shinyDashboardThemeDIY(
   ### general

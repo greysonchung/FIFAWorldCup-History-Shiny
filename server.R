@@ -30,9 +30,9 @@ server <- shinyServer(function(input, output) {
     )
   })
   
+  # value box for nation with most titles
   output$most_title <- renderValueBox({
     
-    # Calculate the top country
     top_country <- tournament %>%
       group_by(winner) %>%
       summarise(title_count = n()) %>%
@@ -45,6 +45,40 @@ server <- shinyServer(function(input, output) {
     valueBox(
       value = paste(country_name, country_titles), subtitle = "Nation with Most Titles",
       icon = fa_i("fas fa-trophy"), color = "yellow"
+    )
+  })
+  
+  output$most_win <- renderValueBox({
+    
+    team_wins <- matches %>%
+      filter(winner != "draw") %>%
+      group_by(winner) %>%
+      summarise(count = n()) %>%
+      arrange(-count)
+    
+    # Extract the team with the most wins
+    top_team <- team_wins$winner[1]
+    top_team_wins <- team_wins$count[1]
+    
+    valueBox(
+      value = paste(top_team, top_team_wins), subtitle = "Nation with Most Games Won",
+      icon = fa_i("fas fa-people-group"), color = "aqua"
+    )
+  })
+  
+  output$most_goal <- renderValueBox({
+    
+    team_goals <- goals %>%
+      group_by(team_name) %>%
+      summarise(count = n()) %>%
+      arrange(-count)
+    
+    top_team <- team_goals$team_name[1]
+    top_team_goals <- team_goals$count[1]
+    
+    valueBox(
+      value = paste(top_team, top_team_goals), subtitle = "Nation with Most Goals",
+      icon = fa_i("fas fa-futbol"), color = "red"
     )
   })
 })

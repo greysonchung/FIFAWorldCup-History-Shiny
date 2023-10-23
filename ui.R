@@ -59,7 +59,8 @@ body <- dashboardBody(
                 column(3, valueBoxOutput("most_win", width = 14)),
                 column(3, valueBoxOutput("most_goal", width = 14))
               )
-            )
+            ),
+            hr()
     )
   )
 )
