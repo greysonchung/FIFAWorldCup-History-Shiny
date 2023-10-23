@@ -54,10 +54,10 @@ body <- dashboardBody(
               h5(strong("The Story So Far..."), style = "font-size:16px;"),
               # Value box
               fluidRow(
-                column(3, valueBoxOutput("incident_1", width = 14)),
-                column(3, valueBoxOutput("student_1", width = 14)),
-                column(3, valueBoxOutput("kill_1", width = 14)),
-                column(3, valueBoxOutput("injury_1", width = 14))
+                column(3, valueBoxOutput("number_comp", width = 14)),
+                column(3, valueBoxOutput("most_title", width = 14)),
+                column(3, valueBoxOutput("most_win", width = 14)),
+                column(3, valueBoxOutput("most_goal", width = 14))
               )
             )
     )

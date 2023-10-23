@@ -1,3 +1,7 @@
+# Read dataset
+tournament <- read.csv("data/tournaments.csv")
+tournament <- tournament[!grepl("FIFA Women's World Cup", tournament$tournament_name), ]
+
 # Theme for dashboard
 customTheme <- shinyDashboardThemeDIY(
   ### general
