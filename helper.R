@@ -1,3 +1,5 @@
+library(tidyverse)
+
 # Read dataset
 tournament <- read.csv("data/tournaments.csv")
 tournament <- tournament[!grepl("FIFA Women's World Cup", tournament$tournament_name), ]
@@ -20,7 +22,7 @@ matches <- matches %>%
 # Theme for dashboard
 customTheme <- shinyDashboardThemeDIY(
   ### general
-  appFontFamily = "Courier New"
+  appFontFamily = "Georgia"
   ,appFontColor = "#2D2D2D"
   ,primaryFontColor = "#000000"
   ,infoFontColor = "#000000"
